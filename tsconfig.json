@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "CommonJS",
+      "lib": ["dom"],
+      "rootDir": ".",
+      "moduleResolution": "node",
+      "baseUrl": "./",
+      "resolveJsonModule": true,
+      "allowJs": false,
+      "checkJs": false,
+      "declaration": true,
+      "outDir": "dist",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}
