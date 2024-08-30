@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Keyboard Control for Bilibili",
+    "name": "Keyboard Control for bilibili",
     "version": "1.0.0",
     "description": "B站键盘控制，解放你的另一只手",
     "icons": {
