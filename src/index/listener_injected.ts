@@ -1,30 +1,35 @@
 let refreshHistory: Element[] = Array.from(document.querySelectorAll(".feed-card"))
-
-window.addEventListener('keyup', function (e) {
-    // key refresh
-    if (e.code === 'KeyR') {
-        (document.querySelector('.roll-btn') as HTMLElement)?.click()
-    }
-
-    // key dynamic
-    if (e.code === 'KeyD') {
-        this.window.open("https://t.bilibili.com/")
-    }
-
-    // key rollback
-    if (e.code === 'KeyB') {
-        rollback()
-    }
-
-    if (e.code.startsWith('Digit') || e.code.startsWith('Numpad')) {
-        const index = parseInt(e.code.slice(-1)) - 1
-        const video = document.querySelectorAll(".feed-card")[index]
-        const aElement = video.querySelector("a")
-        if (aElement) {
-            window.open(aElement.href)
+const element = document.querySelector('.bili-feed4-layout') as HTMLElement;
+if (element) {
+    element.setAttribute('tabindex', '1');
+    element.style.outline = 'none';
+    element.addEventListener('keyup', function (e: KeyboardEvent) {
+        console.log(e.code)
+        // key refresh
+        if (e.code === 'KeyR') {
+            (document.querySelector('.roll-btn') as HTMLElement)?.click()
         }
-    }
-})
+
+        // key dynamic
+        if (e.code === 'KeyD') {
+            window.open("https://t.bilibili.com/")
+        }
+
+        // key rollback
+        if (e.code === 'KeyB') {
+            rollback()
+        }
+
+        if (e.code.startsWith('Digit') || e.code.startsWith('Numpad')) {
+            const index = parseInt(e.code.slice(-1)) - 1
+            const video = document.querySelectorAll(".feed-card")[index]
+            const aElement = video.querySelector("a")
+            if (aElement) {
+                window.open(aElement.href)
+            }
+        }
+    });
+}
 
 const observer = new MutationObserver((mutationsList) => {
     const removedVideo: Element[] = []
