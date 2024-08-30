@@ -4,20 +4,16 @@ if (element) {
     element.setAttribute('tabindex', '1');
     element.style.outline = 'none';
     element.addEventListener('keyup', function (e: KeyboardEvent) {
-        console.log(e.code)
-        // key refresh
-        if (e.code === 'KeyR') {
-            (document.querySelector('.roll-btn') as HTMLElement)?.click()
-        }
+        const actions: Record<string, () => void> = {
+            'KeyR': () => (document.querySelector('.roll-btn') as HTMLElement)?.click(),
+            'KeyD': () => window.open("https://t.bilibili.com/"),
+            'KeyH': () => window.open("https://www.bilibili.com/v/popular/all/"),
+            'KeyB': () => rollback(),
+        };
 
-        // key dynamic
-        if (e.code === 'KeyD') {
-            window.open("https://t.bilibili.com/")
-        }
-
-        // key rollback
-        if (e.code === 'KeyB') {
-            rollback()
+        if (actions[e.code]) {
+            actions[e.code]();
+            return;
         }
 
         if (e.code.startsWith('Digit') || e.code.startsWith('Numpad')) {
